@@ -18,7 +18,7 @@ import {
   SectionEnd,
 } from "./restaurant-info-card.styles";
 
-const RestarantInfoCard = ({ restaurant = {} }) => {
+const RestaurantInfoCard = ({ restaurant = {} }) => {
   const {
     name = "Some Restaurant",
     icon = "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png",
@@ -80,4 +80,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default RestarantInfoCard;
+export default RestaurantInfoCard;
