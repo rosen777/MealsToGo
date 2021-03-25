@@ -11,7 +11,7 @@ const MapCallout = ({ restaurant }) => {
   return (
     <View>
       <RestaurantName>{restaurant.name}</RestaurantName>
-      <CompactRestaurantInfo restaurant={restaurant} />
+      <CompactRestaurantInfo isMap restaurant={restaurant} />
     </View>
   );
 };
