@@ -5,8 +5,10 @@ import { FlatList, TouchableOpacity } from "react-native";
 import { Spacer } from "../../components/spacer/spacer.component";
 import { SafeArea } from "../../components/utils/safe-area.component";
 import styled from "styled-components/native";
+import FavoritesBar from "../../components/favorites/favorites-bar.component";
 
 import { RestaurantsContext } from "../../services/restaurants/restaurants.context";
+import { FavoritesContext } from "../../services/favorites/favorites.context";
 import { theme } from "../../infrastructure/theme";
 
 import RestaurantInfoCard from "../../components/restaurant-info-card.component";
@@ -36,10 +38,12 @@ const RestaurantList = styled(FlatList).attrs({
   },
 })``;
 
-const RestarantsScreen = ({ navigation }) => {
-  const [searchQuery, setSearchQuery] = useState("");
-  const onChangeSearch = (query) => setSearchQuery(query);
-  const { isLoading, error, restaurants } = useContext(RestaurantsContext);
+const RestaurantsScreen = ({ navigation }) => {
+  // Contexts
+  const { isLoading, restaurants } = useContext(RestaurantsContext);
+  const { favorites } = useContext(FavoritesContext);
+
+  const [isToggled, setIsToggled] = useState(false);
 
   return (
     <SafeArea>
@@ -54,11 +58,13 @@ const RestarantsScreen = ({ navigation }) => {
       )}
       <SearchContainer>
         <Search
-          placeholder="Search"
-          onChangeText={onChangeSearch}
-          value={searchQuery}
+          isFavoritesToggled={isToggled}
+          onFavoritesToggle={() => setIsToggled(!isToggled)}
         />
       </SearchContainer>
+      {isToggled && (
+        <FavoritesBar favorites={favorites} onNavigate={navigation.navigate} />
+      )}
       <RestaurantList
         data={restaurants}
         renderItem={({ item }) => {
@@ -85,4 +91,4 @@ const RestarantsScreen = ({ navigation }) => {
   );
 };
 
-export default RestarantsScreen;
+export default RestaurantsScreen;

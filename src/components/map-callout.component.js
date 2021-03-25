@@ -1,6 +1,7 @@
 import React from "react";
 import { View } from "react-native";
 import styled from "styled-components/native";
+import CompactRestaurantInfo from "../components/restaurant/compact-restaurant-info.component";
 
 const RestaurantName = styled.Text`
   font-size: 12px;
@@ -10,6 +11,7 @@ const MapCallout = ({ restaurant }) => {
   return (
     <View>
       <RestaurantName>{restaurant.name}</RestaurantName>
+      <CompactRestaurantInfo restaurant={restaurant} />
     </View>
   );
 };
