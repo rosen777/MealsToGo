@@ -16,7 +16,6 @@ const Favorite = ({ restaurant }) => {
   const { favorites, addToFavorites, removeFromFavorites } = useContext(
     FavoritesContext
   );
-  console.log(favorites);
 
   const isFavorite = favorites.find((r) => r.placeId === restaurant.placeId);
 
