@@ -4,7 +4,7 @@ import styled from "styled-components/native";
 import { Spacer } from "../spacer/spacer.component";
 import { Text } from "../typography/text.component";
 
-import CompactRestaurantInfo from "../restaurant/compact-restaurant-info.component";
+import CompactRestaurantInfo from "../compact-restaurant-info.component";
 
 const FavoritesWarapper = styled.View`
   padding: 10px;

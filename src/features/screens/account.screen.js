@@ -4,15 +4,24 @@ import {
   BackgroundCover,
   AccountContainer,
   AuthButton,
+  AnimationWrapper,
 } from "./account.styles";
 import { Spacer } from "../../components/spacer/spacer.component";
+import LottieView from "lottie-react-native";
 
 const AccountScreen = ({ navigation }) => {
-  debugger;
-  console.log("I am here");
   return (
     <BackgroundPhoto>
       <BackgroundCover />
+      <AnimationWrapper>
+        <LottieView
+          key="animation"
+          autoPlay
+          loop
+          resizeMode="cover"
+          source={require("../../../assets/watermelon.json")}
+        />
+      </AnimationWrapper>
       <AccountContainer>
         <AuthButton
           icon="lock-open-outline"

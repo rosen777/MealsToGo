@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components/native";
-import { Text } from "../typography/text.component";
+import { Text } from "./typography/text.component";
 import { Platform } from "react-native";
 import { WebView } from "react-native-webview";
 
@@ -11,7 +11,7 @@ const CompactImage = styled.Image`
 `;
 
 const CompactWebView = styled(WebView)`
-  boreder-radius: 10px;
+  border-radius: 10px;
   width: 120px;
   height: 100px;
 `;

@@ -1,18 +1,23 @@
 import React, { useState, useContext } from "react";
 import { ActivityIndicator } from "react-native-paper";
-import { FlatList, TouchableOpacity } from "react-native";
+import { TouchableOpacity } from "react-native";
+import { FadeInView } from "../../components/animations/fade.animation";
 
 import { Spacer } from "../../components/spacer/spacer.component";
 import { SafeArea } from "../../components/utils/safe-area.component";
 import styled from "styled-components/native";
-import FavoritesBar from "../../components/favorites/favorites-bar.component";
 
-import { RestaurantsContext } from "../../services/restaurants/restaurants.context";
-import { FavoritesContext } from "../../services/favorites/favorites.context";
 import { theme } from "../../infrastructure/theme";
 
+// Contexts
+import { RestaurantsContext } from "../../services/restaurants/restaurants.context";
+import { FavoritesContext } from "../../services/favorites/favorites.context";
+
+// Components
 import RestaurantInfoCard from "../../components/restaurant-info-card.component";
 import Search from "../../components/restaurant.search.component";
+import FavoritesBar from "../../components/favorites/favorites-bar.component";
+import { RestaurantList } from "../../components/restaurant-list.styles";
 
 const SearchContainer = styled.View`
   padding: ${(props) => props.theme.space[3]};
@@ -31,12 +36,6 @@ const IndicatorView = styled.View`
 `;
 
 // .attrs - gives specific props to our default FlatList
-
-const RestaurantList = styled(FlatList).attrs({
-  contentContainerStyle: {
-    padding: 16,
-  },
-})``;
 
 const RestaurantsScreen = ({ navigation }) => {
   // Contexts
@@ -77,7 +76,9 @@ const RestaurantsScreen = ({ navigation }) => {
               }
             >
               <Spacer position="bottom" size="large">
-                <RestaurantInfoCard restaurant={item} />
+                <FadeInView>
+                  <RestaurantInfoCard restaurant={item} />
+                </FadeInView>
               </Spacer>
             </TouchableOpacity>
           );
